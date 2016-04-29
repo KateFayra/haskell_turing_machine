@@ -65,6 +65,7 @@ The asterisk shows the current position of the head on the tape.
 *Main|                       ]
 *Main| :}
 *Main> runVerbose machine alphabet tape "0"
+*Main> runVerbose machine alphabet tape "0"
 Step 0. Tape: [*"1", "1", "1"]
 Step 0. On state "0"
 Step 0. Preforming instruction: (read "1", write "1", move TapeLeft, next state: "0")
@@ -77,47 +78,43 @@ Step 2. Tape: ["1", "1", *"1"]
 Step 2. On state "0"
 Step 2. Preforming instruction: (read "1", write "1", move TapeLeft, next state: "0")
 
-Step 3. Tape: ["1", "1", *"1", ""]
+Step 3. Tape: ["1", "1", "1", *""]
 Step 3. On state "0"
-Step 3. Preforming instruction: (read "1", write "1", move TapeLeft, next state: "0")
+Step 3. Preforming instruction: (read "", write "", move TapeRight, next state: "1")
 
-Step 4. Tape: ["1", "1", "1", *""]
-Step 4. On state "0"
-Step 4. Preforming instruction: (read "", write "", move TapeRight, next state: "1")
+Step 4. Tape: ["1", "1", *"1", ""]
+Step 4. On state "1"
+Step 4. Preforming instruction: (read "1", write "0", move TapeRight, next state: "1")
 
-Step 5. Tape: ["1", "1", *"1", ""]
+Step 5. Tape: ["1", *"1", "0", ""]
 Step 5. On state "1"
 Step 5. Preforming instruction: (read "1", write "0", move TapeRight, next state: "1")
 
-Step 6. Tape: ["1", *"1", "0", ""]
+Step 6. Tape: [*"1", "0", "0", ""]
 Step 6. On state "1"
 Step 6. Preforming instruction: (read "1", write "0", move TapeRight, next state: "1")
 
-Step 7. Tape: [*"1", "0", "0", ""]
+Step 7. Tape: [*"", "0", "0", "0", ""]
 Step 7. On state "1"
-Step 7. Preforming instruction: (read "1", write "0", move TapeRight, next state: "1")
+Step 7. Preforming instruction: (read "", write "1", move TapeLeft, next state: "2")
 
-Step 8. Tape: [*"", "0", "0", "0", ""]
-Step 8. On state "1"
-Step 8. Preforming instruction: (read "", write "1", move TapeLeft, next state: "2")
+Step 8. Tape: ["1", *"0", "0", "0", ""]
+Step 8. On state "2"
+Step 8. Preforming instruction: (read "0", write "0", move TapeLeft, next state: "2")
 
-Step 9. Tape: ["1", *"0", "0", "0", ""]
+Step 9. Tape: ["1", "0", *"0", "0", ""]
 Step 9. On state "2"
 Step 9. Preforming instruction: (read "0", write "0", move TapeLeft, next state: "2")
 
-Step 10. Tape: ["1", "0", *"0", "0", ""]
+Step 10. Tape: ["1", "0", "0", *"0", ""]
 Step 10. On state "2"
 Step 10. Preforming instruction: (read "0", write "0", move TapeLeft, next state: "2")
 
-Step 11. Tape: ["1", "0", "0", *"0", ""]
+Step 11. Tape: ["1", "0", "0", "0", *""]
 Step 11. On state "2"
-Step 11. Preforming instruction: (read "0", write "0", move TapeLeft, next state: "2")
+Step 11. Preforming instruction: (read "", write "", move TapeRight, next state: "HALT")
 
-Step 12. Tape: ["1", "0", "0", "0", *""]
-Step 12. On state "2"
-Step 12. Preforming instruction: (read "", write "", move TapeRight, next state: "HALT")
-
-Step 13. Tape: ["1", "0", "0", *"0", ""]
-Step 13. HALTING Program Complete.
+Step 12. Tape: ["1", "0", "0", *"0", ""]
+Step 12. HALTING Program Complete.
 *Main>
 ```

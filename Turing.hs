@@ -54,7 +54,7 @@ processInstruction (Just (Instruction writeSymbol dir nextState)) tape position
 
 handleAddingTape (tape, nextState, position)
     | position < 0 = ("":tape, nextState, position+1)
-    | position == (length tape) = (tape ++ [""], nextState, position-1)
+    | position == (length tape) = (tape ++ [""], nextState, position)
     | otherwise = (tape, nextState, position)
 
 runVerbose :: Machine -> Alphabet -> Tape -> String -> IO ()
