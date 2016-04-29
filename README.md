@@ -16,7 +16,7 @@ Input the turing machine specifications:
 - Initial tape (String list)
 - Machine definition with states
 
-Note that the "HALT" alphabet symbol is reserved.
+Note that the "HALT" state is reserved.
 
 The Machine definition is a HashMap where the keys are states labeled with Strings, and the values are States.
 
@@ -25,7 +25,7 @@ The State definition is a HashMap where the keys are the symbols read in from th
 The Instruction definition consists of:
 - A String, which is the label to write to the tape's current position.
 - A Direction, either TapeRight or TapeLeft to move the tape after writing
-- A String, which is the label of the next state.
+- A String, which is the label of the next state. "HALT" should be entered when the program should terminate.
 
 
 The example below is a machine which adds 1 to the binary number on the tape. From: https://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/turing-machine/four.html
