@@ -62,7 +62,9 @@ runVerbose machine alphabet tape startState = loop 0 machine alphabet tape start
 
 loop :: Int -> Machine -> Alphabet -> Tape -> String -> Int -> IO ()
 loop i machine alphabet tape startState position =
-                           do  putStr ("Step " ++ show i ++ ". Tape: [" ++ showTape tape position "" 0 ++ "]" ++ "\n" ++ "Step " ++ show i ++ ". On state " ++ startState ++ ": " ++ showState alphabet (H.lookup startState machine) ++ "\n\n")
+                           do  putStr ("Step " ++ show i ++ ". Tape: [" ++ showTape tape position "" 0 ++ "]" ++ "\n" ++ "Step " ++ show i ++ ". On state " ++ show startState ++ "\n"
+                                        -- ++ ": [" ++ showState alphabet (H.lookup startState machine) ++ "]\n"
+                                        ++ "Step " ++ show i ++ ". " ++ showInstruction machine alphabet tape startState position ++ "\n\n")
                                let (newTape, newState, newPosition) = runStep machine alphabet tape startState position in
                                    if newState == "HALT"
                                         then putStr ("Step " ++ show (i+1) ++ ". Tape: [" ++ showTape newTape newPosition "" 0 ++ "]" ++ "\n" ++ "Step " ++ show (i+1) ++ ". HALTING Program Complete." ++ "\n")
@@ -86,11 +88,18 @@ showState alphabet (Just (State symTable)) = showSymTable alphabet symTable ""
 
 showSymTable :: Alphabet -> TMSymTable -> String -> String
 showSymTable [] symTable str = str
-showSymTable (a:alphabet) symTable str = showSymTable alphabet symTable (addToPrintStr (H.lookup a symTable) str)
+showSymTable (a:alphabet) symTable str = showSymTable alphabet symTable (addToPrintStr (H.lookup a symTable) a str)
 
-addToPrintStr :: Maybe TMInstruction -> String -> String
-addToPrintStr (Just (Instruction symbol dir nextState)) str = (str ++ "(" ++ "read " ++ show symbol ++ ", move " ++ show dir ++ ", next state: " ++ nextState ++ ") ")
-addToPrintStr Nothing str = str
+addToPrintStr :: Maybe TMInstruction -> String -> String -> String
+addToPrintStr (Just (Instruction symbol dir nextState)) readSym str = (str ++ "(read " ++ show readSym ++ ", write " ++ show symbol ++ ", move " ++ show dir ++ ", next state: " ++ show nextState ++ ") ")
+addToPrintStr Nothing readSym str = str
+
+showInstruction machine alphabet tape startState position = showInstructionHelper (H.lookup startState machine) tape position
+
+showInstructionHelper (Just (State symTable)) tape position = (showInstructionHelper2 (H.lookup (tape!!position) symTable) (tape!!position))
+
+showInstructionHelper2 (Just (Instruction writeSymbol dir nextState)) readSymbol = ("Preforming instruction: (read " ++ show readSymbol ++ ", write " ++ show writeSymbol ++ ", move " ++ show dir ++ ", next state: " ++ show nextState ++ ")")
+
 
 -- From: http://stackoverflow.com/questions/10133361/haskell-replace-element-in-list
 replaceAtIndex :: Int -> String -> [String] -> [String]
