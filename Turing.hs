@@ -73,7 +73,7 @@ loop i machine alphabet tape startState position =
 showTape :: Tape -> Int -> String -> Int -> String
 showTape [] position str i = str
 showTape (a:tape) position str i
-    | position == i = showTape tape position (str ++ ("*" ++ (getPrefix i) ++ show a)) (i+1)
+    | position == i = showTape tape position (str ++ ((getPrefix i) ++ "*" ++ show a)) (i+1)
     | otherwise = showTape tape position (str ++ ((getPrefix i) ++ show a)) (i+1)
 
 getPrefix :: Int -> String
