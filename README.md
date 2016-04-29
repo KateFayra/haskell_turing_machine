@@ -65,7 +65,6 @@ The asterisk shows the current position of the head on the tape.
 *Main|                       ]
 *Main| :}
 *Main> runVerbose machine alphabet tape "0"
-*Main> runVerbose machine alphabet tape "0"
 Step 0. Tape: [*"1", "1", "1"]
 Step 0. On state "0"
 Step 0. Preforming instruction: (read "1", write "1", move TapeLeft, next state: "0")
