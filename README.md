@@ -5,13 +5,13 @@ Currently under development.
 
 ###Usage
 
-Load the program into a Haskell intrepter. I am using GHCi.
+Load the program into a Haskell interpreter. I am using GHCi.
 
 ```sh
 ghci Turing.hs
 ```
 
-Input the turing machine specifications:
+Input the Turing Machine specifications:
 - Tape alphabet (String list)
 - Initial tape (String list)
 - Machine definition with states
@@ -51,6 +51,8 @@ runVerbose machine alphabet tape startState
 Where startState is a String with the initial state's label.
 
 ###Example run
+
+The asterisk shows the current position of the head on the tape.
 
 ```haskell
 *Main> let alphabet = ["", "0", "1"]
