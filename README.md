@@ -42,6 +42,14 @@ let machine = H.fromList [
 :}
 ```
 
+After the alphabet, tape, and machine are defined the program can be run with:
+
+```haskell
+runVerbose machine alphabet tape startState
+```
+
+Where startState is a String with the initial state's label.
+
 ###Example run
 
 ```haskell
