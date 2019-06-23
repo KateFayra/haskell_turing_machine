@@ -1,7 +1,7 @@
 # Haskell Turing Machine
 A Turing Machine simulator written in Haskell
 
-###Usage
+### Usage
 
 Load the program into a Haskell interpreter. I am using GHCi.
 
@@ -48,7 +48,7 @@ runVerbose machine alphabet tape startState
 
 Where startState is a String with the initial state's label.
 
-###Example run
+### Example run
 
 The asterisk shows the current position of the head on the tape.
 
