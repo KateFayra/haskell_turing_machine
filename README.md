@@ -1,8 +1,6 @@
 # Haskell Turing Machine
 A Turing Machine simulator written in Haskell
 
-Currently under development.
-
 ###Usage
 
 Load the program into a Haskell interpreter. I am using GHCi.
